@@ -1,0 +1,52 @@
+from abc import ABCMeta, abstractmethod
+import string
+
+class FakultasTeknik(metaclass=ABCMeta):
+   
+   def cetakData(self):
+      print("Universitas\t: ", "Universitas Negeri Makassar")
+      print("Fakultas\t: ", "Teknik")
+      print("Tahun Ajar\t: ", "2019/2020")
+      
+   @abstractmethod
+   def jumlah(self):
+      pass
+
+class ProdiBaru(FakultasTeknik):
+   def __init__(self, j):
+      self.jumlahh = j
+ 
+   def jumlah(self):
+      print("Jumlah Angkatan\t: ", self.jumlahh)
+
+class PTIK(FakultasTeknik):
+   def __init__(self, j, r):
+      self.jumlahh = j
+      self.jurusann = r
+      
+   def jumlah(self):
+      print("Jumlah Angkatan\t: ", self.jumlahh)
+      print("Jurusan \t: ", self.jurusann)
+
+def main():
+   obj = ProdiBaru(90)  # TEKOM
+   print("TEKNIK KOMPUTER")
+   obj.cetakData()
+   obj.jumlah()
+   
+   del obj
+
+   obj = ProdiBaru(85)  # MEKATRONIKA
+   print("\nMEKATRONIKA")
+   obj.cetakData()
+   obj.jumlah()
+   
+   del obj
+
+   obj = PTIK(150, "Elektro")  # PTIK
+   print("\nPTIK")
+   obj.cetakData()
+   obj.jumlah()
+
+if __name__ == "__main__":
+   main()
